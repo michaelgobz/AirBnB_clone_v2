@@ -9,7 +9,7 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """Devuelve un diccionario de modelos actualmente almacenados"""
+        """Returns a dictionary of models currently in storage"""
         if cls is None:
             return FileStorage.__objects
         return {k: v for k, v in FileStorage.__objects.items()
@@ -29,7 +29,7 @@ class FileStorage:
             json.dump(temp, f)
 
     def delete(self, obj=None):
-        """Para eliminar obj de __objects si está dentro"""
+        """Deletes the Object form the object store"""
         if not obj:
             return
         key = "{}.{}".format(type(obj).__name__, obj.id)
