@@ -7,7 +7,7 @@ import models
 
 
 class Review(BaseModel, Base):
-    """ Review classto store review information """
+    """ Review class to store review information """
     if models.is_type == 'db':
         __tablename__ = 'reviews'
         text = Column(String(1024), nullable=False)
