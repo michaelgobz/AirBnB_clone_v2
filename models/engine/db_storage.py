@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Este módulo define una clase para administrar el almacenamiento
-de la base de datos para el clon de hbnb
+This module defines a class to manage database storage for hbnb clone
 """
 from models.base_model import Base
 from sqlalchemy import create_engine
@@ -22,8 +21,7 @@ class DBStorage:
 
     def __init__(self):
         """
-        Crea una instancia del almacenamiento de la
-        base de datos para crear el motor
+        This class manages storage of hbnb models in JSON format
         """
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(getenv("HBNB_MYSQL_USER"),
@@ -37,7 +35,9 @@ class DBStorage:
 
     def all(self, cls=None):
         """
-        consulta sobre la sesión actual de la base de datos
+         constructor
+         HBNB_MYSQL_HOST defaults to localhost
+         at instantiation
         """
         if not cls:
             data_list = self.__session.query(Amenity)
@@ -53,30 +53,27 @@ class DBStorage:
 
     def new(self, obj):
         """
-        Método para agregar el objeto a la
-        sesión actual de la base de datos
+        Adds new object to current Db session
         """
         self.__session.add(obj)
 
     def save(self):
         """
-        Método para confirmar todos los cambios de la
-        sesión actual de la base de datos
+       commit all changes to the database
         """
         self.__session.commit()
 
     def delete(self, obj=None):
         """
-        Método eliminar de la
-        sesión de base de datos actual obj si no es None
+      Deletes the Object form the object storge
         """
-        # obj = cls.id, dentro de una clase, sería una fila de esa clase
+
         if obj:
             self.__session.delete(obj)
 
     def reload(self):
         """
-        crear todas las tablas en la base de datos
+        Loads storage dictionary from file
         """
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(
@@ -86,6 +83,6 @@ class DBStorage:
 
     def close(self):
         """
-        llamar al método remove() en el atributo de sesión privada
+        close the session
         """
         self.__session.close()
