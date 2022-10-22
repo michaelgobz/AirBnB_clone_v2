@@ -6,7 +6,7 @@ out-of-date archives, using the function do_clean:"""
 from fabric.api import env, local, put, run
 from datetime import datetime
 from os.path import exists, isdir
-env.hosts = ['35.185.108.180', '34.229.169.234']
+env.hosts = ['3.239.98.245', '34.239.177.244']
 
 
 def local_clean(number=0):

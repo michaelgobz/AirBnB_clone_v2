@@ -7,7 +7,7 @@ function deploy:"""
 from fabric.api import local, env, put, run
 from datetime import datetime
 import os
-env.hosts = ['35.185.108.180', '34.229.169.234']
+env.hosts = ['3.239.98.245', '34.239.177.244']
 env.user = 'ubuntu'
 
 
