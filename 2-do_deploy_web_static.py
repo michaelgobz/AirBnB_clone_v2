@@ -1,13 +1,12 @@
 #!/usr/bin/python3
-"""This script (based on the file 1-pack_web_static.py) that
-distributes an archive to your web servers, using the function do_deploy"""
+"""
+Fabric script based on the file 1-pack_web_static.py that distributes an
+archive to the web servers
+"""
 
-
-from fabric.api import env, put, run
+from fabric.api import put, run, env
 from os.path import exists
-import shlex
-env.hosts = ['3.239.98.245', '34.239.177.244']
-env.user = 'ubuntu'
+env.hosts = ['142.44.167.228', '144.217.246.195']
 
 
 def do_deploy(archive_path):
